@@ -4,14 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DoXy$ Hoodie</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#111;color:white;text-align:center;}
-header{background:black;padding:20px;font-size:26px;font-weight:bold;letter-spacing:3px;}
-.hero{padding:60px 20px;}
+body{background:#111;color:white;}
+header{background:black;padding:20px;text-align:center;font-size:28px;font-weight:bold;letter-spacing:3px;}
+.hero{padding:60px 20px;text-align:center;position:relative;}
+.hero h1{font-size:42px;margin-bottom:20px;}
+.hero p{font-size:18px;color:#ccc;margin-bottom:40px;}
+.arrow{font-size:40px;color:white;position:absolute;bottom:10px;left:50%;transform:translateX(-50%);animation:bounce 1s infinite;}
+@keyframes bounce{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,10px);}}
 .btn{background:white;color:black;padding:12px 25px;text-decoration:none;font-weight:bold;border-radius:30px;cursor:pointer;border:none;}
-.product{padding:50px 20px;}
+.product{padding:50px 20px;text-align:center;}
 .img-container{width:280px;margin:auto;}
 #hoodie-img{width:100%;transition:opacity .5s;}
 .colors{margin:15px 0;}
@@ -21,28 +24,30 @@ header{background:black;padding:20px;font-size:26px;font-weight:bold;letter-spac
 .gray{background:gray;}
 select,input{padding:10px;margin:10px 0;border-radius:8px;border:none;width:80%;}
 form{margin-top:20px;}
-footer{margin-top:40px;padding:20px;background:black;font-size:14px;}
+footer{margin-top:40px;padding:20px;background:black;font-size:14px;text-align:center;}
+.section{padding:40px 20px;text-align:center;}
+.section h2{font-size:28px;margin-bottom:20px;}
+.section p{font-size:16px;color:#ccc;max-width:600px;margin:auto;margin-bottom:20px;}
 </style>
 </head>
-
 <body>
 
 <header>DoXy$</header>
 
 <section class="hero">
 <h1>Stay Bold. Stay DoXy$.</h1>
-<p>Premium hoodie for everyday streetwear.</p>
-<a href="#buy" class="btn">Buy Now</a>
+<p>Premium hoodie for everyday streetwear made with comfort, style, and durability in mind.</p>
+<button class="btn" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'});">Buy Now</button>
+<div class="arrow">⬇️</div>
 </section>
 
 <section class="product" id="buy">
-
 <div class="img-container">
-<img id="hoodie-img" src="https://i.postimg.cc/hv1tFtSr/IMG-20260221-193953-640.png">
+<img id="hoodie-img" src="https://i.postimg.cc/hv1tFtSr/IMG-20260221-193953-640.png" alt="DoXy$ Gray Hoodie">
 </div>
 
 <h2>DoXy$ Classic Hoodie</h2>
-<p>₱1,000</p>
+<p style="color:#ccc;">₱1,000</p>
 
 <div class="colors">
 <span class="color-box black" onclick="changeColor('black')"></span>
@@ -50,7 +55,6 @@ footer{margin-top:40px;padding:20px;background:black;font-size:14px;}
 <span class="color-box gray" onclick="changeColor('gray')"></span>
 </div>
 
-<!-- SIZE SELECTOR -->
 <select id="size">
 <option value="">Select Size</option>
 <option>S</option>
@@ -59,7 +63,6 @@ footer{margin-top:40px;padding:20px;background:black;font-size:14px;}
 <option>XL</option>
 </select>
 
-<!-- ORDER FORM -->
 <form onsubmit="orderNow(event)">
 <input type="text" id="name" placeholder="Your Name" required>
 <input type="text" id="address" placeholder="Your Address" required>
@@ -67,7 +70,20 @@ footer{margin-top:40px;padding:20px;background:black;font-size:14px;}
 </form>
 
 <p id="success" style="margin-top:15px;color:lime;"></p>
+</section>
 
+<section class="section" id="material">
+<h2>Material & Quality</h2>
+<p>Our DoXy$ hoodie is made from 100% premium cotton with soft fleece lining for maximum comfort. Durable stitching ensures it lasts for years while keeping its modern fit.</p>
+</section>
+
+<section class="section" id="why-buy">
+<h2>Why Buy This Hoodie?</h2>
+<p>✅ Premium comfort & durability<br>
+✅ Modern streetwear style<br>
+✅ Perfect for everyday wear<br>
+✅ Stand out with the unique DoXy$ design<br>
+✅ Available in Black, White, and Gray</p>
 </section>
 
 <footer>
@@ -82,12 +98,13 @@ img.style.opacity=0;
 setTimeout(()=>{
 if(color==='gray'){
 img.src='https://i.postimg.cc/hv1tFtSr/IMG-20260221-193953-640.png';
-}
-else if(color==='white'){
+img.alt='DoXy$ Gray Hoodie';
+}else if(color==='white'){
 img.src='https://i.postimg.cc/26RdH1qX/20260221-193043-0000.png';
-}
-else if(color==='black'){
+img.alt='DoXy$ White Hoodie';
+}else if(color==='black'){
 img.src='https://i.postimg.cc/65LPCNPN/20260221-191842-0000.png';
+img.alt='DoXy$ Black Hoodie';
 }
 img.style.opacity=1;
 },300);
@@ -97,12 +114,7 @@ function orderNow(e){
 e.preventDefault();
 let name=document.getElementById('name').value;
 let size=document.getElementById('size').value;
-
-if(size===""){
-alert("Please select size!");
-return;
-}
-
+if(size===""){alert("Please select size!"); return;}
 document.getElementById('success').innerHTML=
 "✅ Thank you "+name+"! Your DoXy$ hoodie ("+size+") order has been received.";
 }
