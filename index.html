@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoXy$ Hoodie</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #111; color: white; }
+        header { background: black; padding: 20px; text-align: center; font-size: 26px; font-weight: bold; letter-spacing: 3px; }
+        .hero { text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 42px; margin-bottom: 20px; }
+        .hero p { font-size: 18px; margin-bottom: 30px; color: #ccc; }
+        .btn { background: white; color: black; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 30px; transition: 0.3s; display: inline-block; }
+        .btn:hover { background: #ccc; }
+        .product { display: flex; flex-direction: column; align-items: center; padding: 50px 20px; }
+        .img-container { width: 280px; overflow: hidden; margin-bottom: 20px; }
+        #hoodie-img { width: 100%; display: block; transition: opacity 0.5s ease-in-out; }
+        .colors { margin: 15px 0; }
+        .color-box { display: inline-block; width: 20px; height: 20px; border-radius: 50%; margin: 5px; border: 1px solid #555; cursor: pointer; }
+        .black { background: black; }
+        .white { background: white; }
+        .gray { background: gray; }
+        footer { text-align: center; padding: 20px; background: black; font-size: 14px; margin-top: 40px; }
+        @media (min-width: 768px) { .product { flex-direction: row; justify-content: center; gap: 60px; } }
+    </style>
+</head>
+<body>
+
+<header>
+    DoXy$
+</header>
+
+<section class="hero">
+    <h1>Stay Bold. Stay DoXy$.</h1>
+    <p>Premium quality hoodie made for comfort, style, and everyday wear.</p>
+    <a href="#buy" class="btn">Buy Now</a>
+</section>
+
+<section class="product" id="buy">
+    <div class="img-container">
+        <img id="hoodie-img" src="https://i.postimg.cc/hv1tFtSr/IMG-20260221-193953-640.png" alt="DoXy$ Gray Hoodie">
+    </div>
+    <div>
+        <h2>DoXy$ Classic Hoodie</h2>
+        <p class="price">₱1,000</p>
+        <p>Available Colors:</p>
+        <div class="colors">
+            <span class="color-box black" title="Black" onclick="changeColor('black')"></span>
+            <span class="color-box white" title="White" onclick="changeColor('white')"></span>
+            <span class="color-box gray" title="Gray" onclick="changeColor('gray')"></span>
+        </div>
+        <p>Soft fabric, modern fit, perfect for streetwear and daily outfits.</p>
+        <br>
+        <a href="#" class="btn">Order Now</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 DoXy$ | All Rights Reserved
+</footer>
+
+<script>
+function changeColor(color) {
+    const img = document.getElementById('hoodie-img');
+    img.style.opacity = 0; // fade out
+
+    setTimeout(() => {
+        if(color === 'gray') {
+            img.src = 'https://i.postimg.cc/hv1tFtSr/IMG-20260221-193953-640.png';
+            img.alt = 'DoXy$ Gray Hoodie';
+        } else if(color === 'white') {
+            img.src = 'https://i.postimg.cc/26RdH1qX/20260221-193043-0000.png';
+            img.alt = 'DoXy$ White Hoodie';
+        } else if(color === 'black') {
+            img.src = 'https://i.postimg.cc/65LPCNPN/20260221-191842-0000.png';
+            img.alt = 'DoXy$ Black Hoodie';
+        }
+        img.style.opacity = 1; // fade in
+    }, 300);
+}
+</script>
+
+</body>
+</html>
